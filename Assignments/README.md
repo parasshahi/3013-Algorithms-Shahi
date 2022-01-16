@@ -2,4 +2,5 @@
 
 |  #  | Folder Link | Assignment Description |
 |:---:| ----------- | ---------------------- |
-|  1  |     A03     |   Banner Page          |
+|  1  |    A03a     |   Banner Page          |
+|  2  |    A03b     |   Commenting Code      |
