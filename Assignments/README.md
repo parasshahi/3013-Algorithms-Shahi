@@ -1,6 +1,6 @@
 ## Assignment Folder
 
-|  #  | Folder Link | Assignment Description |
-|:---:| ----------- | ---------------------- |
-|  1  |    A03a     |   Banner Page          |
-|  2  |    A03b     |   Commenting Code      |
+|  #  | Folder Link |           Assignment Description         |
+|:---:| ----------- | ---------------------------------------- |
+|  1  |    A03a     |             Banner Page                  |
+|  2  |    A03b     |   Assignment to ensure proper commenting |
