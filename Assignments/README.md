@@ -6,3 +6,4 @@
 |  2  |    A03b     |   Commenting C++ Code                    |
 |  3  |    P01      |     Resizing the Stack                   |
 |  4  |    P02      |     Processing in Linear Time            |
+|  5  |    P04      |     Processing inTrie Tree Time          |
