@@ -20,7 +20,7 @@
 #include <iostream>
 #include <list>
 #include <fstream>
-#include "nlohmann/json.hpp"
+#include "json.hpp"
 #include "timer.hpp"
 
 using namespace std;
