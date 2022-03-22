@@ -103,84 +103,82 @@ int CountLines(string file_name) {
  * Returns:
  *      int - line count
  */
-vector<string> LoadDictionary(string file_name) {
+
+LL LoadDict(std::string file_name) 
+{
     ifstream fin;                            // file to get animal names
     int count = (CountLines(file_name) + 1); // get size of input file
-    LL ListofWords;             
-    fin.open("dictionary.txt"); // open file for reading
+    LL dictList;                 
+    fin.open(file_name);                    // open file for reading
+    std::string readIn;
+    for (int i = 0; i < count; i++) 
+    {
+        fin >> readIn;
+       dictList.add(readIn);         // read in words
+    }
 
-    string read;
-    for (int i = 0; i < count; i++) {
-        fin >> read; 
-        ListofWords.add(read);
-      }  
-    //return ListofWords;
+    return dictList;
+}
+vector<string> FindMatches(LL dictList, std::string substring) 
+{
+    vector<string> matches; // to hold any matches
+    size_t found;           // size_t is an integer position of
+                            // found item. -1 if its not found.
+
+    wordNodes* temp = dictList.head; //points to head
+
+    while(temp->next)       // loop through list
+    {   
+        found = temp->word.find(substring);    // check for substr match
+
+        if(found == 0)           
+        {  
+            matches.push_back(temp->word);     // add to matches
+        }
+
+        temp = temp->next; // traverseres list
+    }
+
+    return matches;
 }
 
-/**
- * Description:
- *      Finds partial matches in an array of strings and returns them. It
- *      doesn't matter where in the string the match is.
- * Params:
- *      vector<string>  array       - array to search
- *      string          substring   - substring to search for in each word
- * 
- * Returns:
- *      vector<string> - holding all the matches to substring
- */
-/*vector<string> Findwords(const LL, ListofWords, string substr) {
-    vector<string> words; 
-    size_t found; 
-    
-    return words;
-}
-*/
 int main() {
-    char k;                 
-    string word = "";       
+    char k;                 // holder for character being typed
+    string word = "";       // var to concatenate letters to
     LL ListofWords;
-    vector<string> words; 
-    int loc;                
-
+    vector<string> words; // any matches found in vector of animals
     ofstream fout("temp.txt");
-
+    
     Timer T;   // create a timer
     T.Start(); // start it
-
-    ListofWords = LoadDictionary("dictionary.txt");
-
-    T.End(); 
-
-   
-    cout << T.Seconds() << " seconds to read in and print json" << endl;
-    cout << T.MilliSeconds() << " milli to read in and print json" << endl;
-    
+    T.End(); // end the current timer
     cout << "Type keys and watch what happens. Type capital Z to quit." << endl;
 
-    
+    // While capital Z is not typed keep looping
     while ((k = getch()) != 'Z') {
         T.Start(); // start it
-        
+        // Tests for a backspace and if pressed deletes
+        // last letter from "word".
         if ((int)k == 127) {
             if (word.size() > 0) {
                 word = word.substr(0, word.size() - 1);
             }
         } else {
-            
+            // Make sure a letter was pressed and only letter
             if (!isalpha(k)) {
                 cout << "Letters only!" << endl;
                 continue;
             }
 
-            
+            // We know its a letter, lets make sure its lowercase.
+            // Any letter with ascii value < 97 is capital so we
+            // lower it.
             if ((int)k < 97) {
                 k += 32;
             }
-            word += k; 
+            word += k; // append char to word
         }
-      
-        words = findwords(dictionary, word);
 
-        
+      }  
     return 0;
 }
